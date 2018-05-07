@@ -4,10 +4,10 @@ ENTRYPOINT [ "/bin/bash" ]
 
 RUN apt-get update && \
     apt-get install wget -y && \
-    mkdir ~/indexpage && \
+    mkdir /var/lib/docker/tmp/docker-builder870846967/indexpag && \
     cd ~/indexpage && wget https://s3.us-east-2.amazonaws.com/itzdata-coka/index.html && \
     cd /
 
-COPY ~/indexpage /usr/share/nginx/html
+COPY /var/lib/docker/tmp/docker-builder870846967/indexpag /usr/share/nginx/html
 
 EXPOSE 80
