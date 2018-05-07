@@ -2,7 +2,8 @@ FROM nginx
 
 ENTRYPOINT [ "/bin/bash" ]
 
-RUN apt-get install wget && \
+RUN apt-get update && \
+    apt-get install wget && \
     mkdir ~/indexpage && \
     cd ~/indexpage && wget https://s3.us-east-2.amazonaws.com/itzdata-coka/index.html
 
