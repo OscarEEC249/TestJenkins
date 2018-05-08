@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("jenkinstest")
+        app = docker.build("nginxtest")
     }
 
     stage('Docker Push') {
@@ -19,7 +19,7 @@ node {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker push oscareec249/jenkinstest:latest'
+          sh 'docker push nginxtest:latest'
         }
       }
     }
